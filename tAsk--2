@@ -1,0 +1,82 @@
+#include<stdio.h>
+
+int main() {
+    char ur1, ur2;
+    float value, C, F, K;
+    
+    printf("Enter temperature unit (only 1st term) of given temperature: \n");
+    scanf(" %c", &ur1);
+    printf("Enter value to convert: \n");
+    scanf("%f", &value);
+    
+    printf("Enter temperature unit (only 1st term)in which you need temperature as a result: \n");
+    scanf(" %c", &ur2);
+    
+    char values[2];
+    
+    switch(ur1) {
+        case 'c':
+        case 'C':
+            values[0] = 'c';
+            break;
+        case 'f':
+        case 'F':
+            values[0] = 'f';
+            break;
+        default:
+            values[0] = 'k';
+            break;
+    }
+    
+    switch(ur2) {
+        case 'c':
+        case 'C':
+            values[1] = 'c';
+            break;
+        case 'f':
+        case 'F':
+            values[1] = 'f';
+            break;
+        default:
+            values[1] = 'k';
+            break;
+    }
+
+    if(values[0] == 'c') {
+        if(values[1] == 'c') {
+            printf("%f\n", value);
+        } else if(values[1] == 'f') {
+            F = (value * 9 / 5) + 32;
+            printf("%f\n", F);
+        } else {
+            K = value + 273.15;
+            printf("%f\n", K);
+        }
+    }
+    
+    if(values[0] == 'f') {
+        if(values[1] == 'f') {
+            printf("%f\n", value);
+        } else if(values[1] == 'c') {
+            C = (value - 32) * (5.0 / 9.0);
+            printf("%f\n", C);
+        } else {
+            K = ((value - 32) / 1.8) + 273.15;
+            printf("%f\n", K);
+        }
+    }
+    
+    if(values[0] == 'k') {
+        if(values[1] == 'k') {
+            printf("%f\n", value);
+        } else if(values[1] == 'f') {
+            F = (((value - 273.15))* 9 )/ 5 + 32;
+            printf("%f\n", F);
+        } else {
+            C = value - 273.15;
+            printf("%f\n", C);
+        }
+    }
+    
+    return 0;
+}
